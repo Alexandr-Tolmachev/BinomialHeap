@@ -294,5 +294,6 @@ private:
 
 		ptr->back_ptr->element = ptr->parent;
 		ptr->parent->back_ptr->element = ptr;
+
 	}
 };
