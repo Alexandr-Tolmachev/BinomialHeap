@@ -215,6 +215,26 @@ TEST(HeapTest, SpeedTest_12) {
 	ASSERT_GE(10, ((double)finish - start) / ((double)CLOCKS_PER_SEC));
 }
 
+TEST(HeapTest, MergeTest_13) {
+	BinomialHeap<int> heap1, heap2;
+	vector<int> v;
+	int TEST_SIZE = 100000, temp;
+	for (int i = 0; i < TEST_SIZE; i++) {
+		temp = rand();
+		v.push_back(temp);
+		heap1.insert(temp);
+	}
+	for (int i = 0; i < TEST_SIZE; i++) {
+		temp = rand();
+		v.push_back(temp);
+		heap2.insert(temp);
+	}
+	heap1.merge(heap2);
+	sort(v.begin(), v.end());
+	for (int i = 0; i < 2 * TEST_SIZE; i++)
+		ASSERT_EQ(heap1.extract_min(), v[i]);
+}
+
 TEST(HeapTest, SmallMergeTest_14) {
 	BinomialHeap<int> heap1, heap2;
 	heap1.insert(1);
