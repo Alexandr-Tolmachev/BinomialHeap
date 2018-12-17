@@ -215,6 +215,15 @@ TEST(HeapTest, SpeedTest_12) {
 	ASSERT_GE(10, ((double)finish - start) / ((double)CLOCKS_PER_SEC));
 }
 
+TEST(HeapTest, SmallMergeTest_14) {
+	BinomialHeap<int> heap1, heap2;
+	heap1.insert(1);
+	heap2.insert(2);
+	heap1.insert(3);
+	heap1.merge(heap2);
+	ASSERT_EQ(heap2.is_empty(), true);
+}
+
 int main(int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();

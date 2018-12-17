@@ -198,7 +198,6 @@ public:
 	void Delete(Pointer* pointer) {
 		pointer->element->less = true;
 		decreaseKey(pointer, pointer->element->elem);
-		//delete pointer;
 		this->extract_min();
 	}
 
